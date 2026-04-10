@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: forum-backend
+  output:
+    ansi:
+      enable: ALWAYS
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/forum_db?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 8888
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    
+mybatis:
+  mapper-location: classpath:mapper/**/*.xml
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+
+
+logging:
+  pattern:
+    dateformat: HH:mm:ss
+  level:
+    root: info
+    com.weisizhang.forumbackend: debug
+  file:
+    path: ./log/project/forum
