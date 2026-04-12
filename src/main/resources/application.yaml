@@ -21,6 +21,17 @@ mybatis:
 server:
   port: 8080
 
+# Springdoc OpenAPI 配置
+springdoc:
+  # 扫描哪些包里的 Controller 来生成文档
+  packages-to-scan: com.weisizhang.forumbackend.controller
+  swagger-ui:
+    # Swagger UI 页面的访问路径
+    path: /swagger-ui.html
+  api-docs:
+    # OpenAPI JSON 文档的访问路径（可导入 Postman）
+    path: /v3/api-docs
+
 management:
   endpoints:
     web:
