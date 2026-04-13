@@ -14,7 +14,7 @@ public class User {
 
     private String nickname;
 
-    private String phone;
+    private String phonenum;
 
     private String email;
 

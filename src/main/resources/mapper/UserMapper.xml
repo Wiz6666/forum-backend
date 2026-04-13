@@ -6,7 +6,7 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phonenum" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="gender" jdbcType="TINYINT" property="gender" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
@@ -20,7 +20,7 @@
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, nickname, phone, email, gender, salt, avatarUrl, articleCount,
+    id, username, password, nickname, phoneNum, email, gender, salt, avatarUrl, articleCount,
     isAdmin, remark, state, deleteState, createTime, updateTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -35,13 +35,13 @@
   </delete>
   <insert id="insert" parameterType="com.weisizhang.forumbackend.model.User" useGeneratedKeys="true" keyProperty="id">
     insert into t_user (id, username, password,
-      nickname, phone, email,
+      nickname, phoneNum, email,
       gender, salt, avatarUrl,
       articleCount, isAdmin, remark,
       state, deleteState, createTime,
       updateTime)
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{nickname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{nickname,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
       #{gender,jdbcType=TINYINT}, #{salt,jdbcType=VARCHAR}, #{avatarurl,jdbcType=VARCHAR},
       #{articlecount,jdbcType=INTEGER}, #{isadmin,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR},
       #{state,jdbcType=TINYINT}, #{deletestate,jdbcType=TINYINT}, #{createtime,jdbcType=TIMESTAMP},
@@ -54,7 +54,7 @@
       <if test="username != null">username,</if>
       <if test="password != null">password,</if>
       <if test="nickname != null">nickname,</if>
-      <if test="phone != null">phone,</if>
+      <if test="phonenum != null">phoneNum,</if>
       <if test="email != null">email,</if>
       <if test="gender != null">gender,</if>
       <if test="salt != null">salt,</if>
@@ -72,7 +72,7 @@
       <if test="username != null">#{username,jdbcType=VARCHAR},</if>
       <if test="password != null">#{password,jdbcType=VARCHAR},</if>
       <if test="nickname != null">#{nickname,jdbcType=VARCHAR},</if>
-      <if test="phone != null">#{phone,jdbcType=VARCHAR},</if>
+      <if test="phonenum != null">#{phonenum,jdbcType=VARCHAR},</if>
       <if test="email != null">#{email,jdbcType=VARCHAR},</if>
       <if test="gender != null">#{gender,jdbcType=TINYINT},</if>
       <if test="salt != null">#{salt,jdbcType=VARCHAR},</if>
@@ -92,7 +92,7 @@
       <if test="username != null">username = #{username,jdbcType=VARCHAR},</if>
       <if test="password != null">password = #{password,jdbcType=VARCHAR},</if>
       <if test="nickname != null">nickname = #{nickname,jdbcType=VARCHAR},</if>
-      <if test="phone != null">phone = #{phone,jdbcType=VARCHAR},</if>
+      <if test="phonenum != null">phoneNum = #{phonenum,jdbcType=VARCHAR},</if>
       <if test="email != null">email = #{email,jdbcType=VARCHAR},</if>
       <if test="gender != null">gender = #{gender,jdbcType=TINYINT},</if>
       <if test="salt != null">salt = #{salt,jdbcType=VARCHAR},</if>
@@ -112,7 +112,7 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
+      phoneNum = #{phonenum,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=TINYINT},
       salt = #{salt,jdbcType=VARCHAR},
