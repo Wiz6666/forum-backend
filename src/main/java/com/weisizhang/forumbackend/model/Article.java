@@ -8,25 +8,26 @@ import java.util.Date;
 public class Article {
     private Long id;
 
-    private Long boardid;
+    private Long boardId;
 
     private Long userid;
 
     private String title;
 
-    private Integer vistcount;
+    private Integer vistCount;
 
-    private Integer replycount;
+    private Integer replyCount;
 
-    private Integer likecount;
+    private Integer likeCount;
+
 
     private Byte state;
 
-    private Byte deletestate;
+    private Byte deleteState;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
     private String content;
 }

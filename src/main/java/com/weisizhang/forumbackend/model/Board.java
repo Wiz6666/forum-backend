@@ -11,7 +11,7 @@ public class Board {
 
     private String name;
 
-    private Integer articlecount;
+    private Integer articleCount;
 
     private Integer sort;
 
@@ -39,12 +39,12 @@ public class Board {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getArticlecount() {
-        return articlecount;
+    public Integer getArticleCount() {
+        return articleCount;
     }
 
-    public void setArticlecount(Integer articlecount) {
-        this.articlecount = articlecount;
+    public void setArticleCount(Integer articleCount) {
+        this.articleCount = articleCount;
     }
 
     public Integer getSort() {

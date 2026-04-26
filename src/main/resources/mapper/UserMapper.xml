@@ -11,7 +11,7 @@
     <result column="gender" jdbcType="TINYINT" property="gender" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="avatarUrl" jdbcType="VARCHAR" property="avatarurl" />
-    <result column="articleCount" jdbcType="INTEGER" property="articlecount" />
+    <result column="articleCount" jdbcType="INTEGER" property="articleCount" />
     <result column="isAdmin" jdbcType="TINYINT" property="isadmin" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="state" jdbcType="TINYINT" property="state" />
@@ -43,7 +43,7 @@
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{nickname,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
       #{gender,jdbcType=TINYINT}, #{salt,jdbcType=VARCHAR}, #{avatarurl,jdbcType=VARCHAR},
-      #{articlecount,jdbcType=INTEGER}, #{isadmin,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR},
+      #{articleCount,jdbcType=INTEGER}, #{isadmin,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR},
       #{state,jdbcType=TINYINT}, #{deletestate,jdbcType=TINYINT}, #{createtime,jdbcType=TIMESTAMP},
       #{updatetime,jdbcType=TIMESTAMP})
   </insert>
@@ -59,7 +59,7 @@
       <if test="gender != null">gender,</if>
       <if test="salt != null">salt,</if>
       <if test="avatarurl != null">avatarUrl,</if>
-      <if test="articlecount != null">articleCount,</if>
+      <if test="articleCount != null">articleCount,</if>
       <if test="isadmin != null">isAdmin,</if>
       <if test="remark != null">remark,</if>
       <if test="state != null">state,</if>
@@ -77,7 +77,7 @@
       <if test="gender != null">#{gender,jdbcType=TINYINT},</if>
       <if test="salt != null">#{salt,jdbcType=VARCHAR},</if>
       <if test="avatarurl != null">#{avatarurl,jdbcType=VARCHAR},</if>
-      <if test="articlecount != null">#{articlecount,jdbcType=INTEGER},</if>
+      <if test="articleCount != null">#{articleCount,jdbcType=INTEGER},</if>
       <if test="isadmin != null">#{isadmin,jdbcType=TINYINT},</if>
       <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
       <if test="state != null">#{state,jdbcType=TINYINT},</if>
@@ -97,7 +97,7 @@
       <if test="gender != null">gender = #{gender,jdbcType=TINYINT},</if>
       <if test="salt != null">salt = #{salt,jdbcType=VARCHAR},</if>
       <if test="avatarurl != null">avatarUrl = #{avatarurl,jdbcType=VARCHAR},</if>
-      <if test="articlecount != null">articleCount = #{articlecount,jdbcType=INTEGER},</if>
+      <if test="articleCount != null">articleCount = #{articleCount,jdbcType=INTEGER},</if>
       <if test="isadmin != null">isAdmin = #{isadmin,jdbcType=TINYINT},</if>
       <if test="remark != null">remark = #{remark,jdbcType=VARCHAR},</if>
       <if test="state != null">state = #{state,jdbcType=TINYINT},</if>
@@ -117,7 +117,7 @@
       gender = #{gender,jdbcType=TINYINT},
       salt = #{salt,jdbcType=VARCHAR},
       avatarUrl = #{avatarurl,jdbcType=VARCHAR},
-      articleCount = #{articlecount,jdbcType=INTEGER},
+      articleCount = #{articleCount,jdbcType=INTEGER},
       isAdmin = #{isadmin,jdbcType=TINYINT},
       remark = #{remark,jdbcType=VARCHAR},
       state = #{state,jdbcType=TINYINT},

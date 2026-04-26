@@ -1,8 +1,11 @@
 package com.weisizhang.forumbackend.common;
 
-public class AppResult<T> {
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+public class AppResult<T> {
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private int  code;
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private String message;
     private T data;
 

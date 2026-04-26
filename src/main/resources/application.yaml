@@ -9,6 +9,9 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/forum_db?characterEncoding=utf8&useSSL=false
     username: root
     password: 8888
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -20,6 +23,13 @@ mybatis:
 
 server:
   port: 8080
+
+login:
+  url: /sign-in.html
+
+index:
+    board-num: 9 #首页显示的板块数
+
 
 # Springdoc OpenAPI 配置
 springdoc:

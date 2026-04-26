@@ -2,9 +2,12 @@ package com.weisizhang.forumbackend.controller;
 
 import com.weisizhang.forumbackend.common.AppResult;
 import com.weisizhang.forumbackend.common.ResultCode;
+import com.weisizhang.forumbackend.config.AppConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import com.weisizhang.forumbackend.model.User;
@@ -12,10 +15,7 @@ import com.weisizhang.forumbackend.services.IUserService;
 import com.weisizhang.forumbackend.utils.MD5Util;
 import com.weisizhang.forumbackend.utils.UUIDUtil;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "用户接口")
 //日志
@@ -69,5 +69,75 @@ public class UserController {
         userService.createNormalUser(user);
         // 返回成功
         return AppResult.success();
+    }
+
+    /**
+     * 用户登录
+     * @param username 用户名
+     * @param password  密码
+     * @return
+     */
+    @PostMapping("/login")
+    @Operation(summary = "用户登录")
+    public AppResult login(
+            HttpServletRequest request,
+            @Parameter(description = "用户名") @RequestParam("username") @NonNull String username,
+            @Parameter(description = "密码") @RequestParam("password") @NonNull String password) {
+
+        //1.调用Service 登陆方法, 返回user对象
+        User user = userService.login(username, password);
+        if (user == null) {
+            log.warn("{}", ResultCode.FAILED_LOGIN);
+            return AppResult.failed(ResultCode.FAILED_LOGIN);
+        }
+        //2.如果登陆成功, 把user对象设置到session对象里
+        HttpSession session = request.getSession(true);
+        session.setAttribute(AppConfig.USER_SESSION, user);
+        //3.返回
+        log.info("{}", ResultCode.SUCCESS);
+        return AppResult.success();
+    }
+
+
+    @PostMapping("/logout")
+    @Operation(summary = "用户登出")
+    public AppResult logout (HttpServletRequest request) {
+        // 获取 session对 象
+        HttpSession session = request.getSession();
+        if (session != null) {
+            log.info("{},退出成功", ResultCode.SUCCESS);
+        // 注 销 session
+            session.invalidate();
+        }
+        // 退 出 成功 响 应
+        return AppResult.success();
+    }
+
+    @Operation(summary = "获取用户信息")
+    @GetMapping("/info")
+    public AppResult<User> getUserInfo (HttpServletRequest request,
+                                        @Parameter(description = "用户Id") @RequestParam(value = "id", required = false) Long id) {
+        // 定义返回的User对象
+        User user;
+        // 根据Id的值判断User对象的获取方式
+        if (id == null) {
+            // 1. 如果id为空，从session中获取当前登录的用户信息
+            HttpSession session = request.getSession(false);
+
+            if(session == null || session.getAttribute(AppConfig.USER_SESSION) == null) {
+                return AppResult.failed(ResultCode.FAILED_FORBIDDEN);
+            }
+
+            user = (User) session.getAttribute(AppConfig.USER_SESSION);
+        } else {
+            // 2. 如果id不为空，从数据库中按Id查询出用户信息
+            user = userService.selectById(id);
+        }
+        // 判断用户对象是否为空
+        if (user == null) {
+            return AppResult.failed(ResultCode.FAILED_USER_NOT_EXISTS);
+        }
+        // 返回正常的结果
+        return AppResult.success(user);
     }
 }

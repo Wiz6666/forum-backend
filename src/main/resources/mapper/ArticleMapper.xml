@@ -3,16 +3,16 @@
 <mapper namespace="com.weisizhang.forumbackend.dao.ArticleMapper">
   <resultMap id="BaseResultMap" type="com.weisizhang.forumbackend.model.Article">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="boardID" jdbcType="BIGINT" property="boardid" />
+    <result column="boardID" jdbcType="BIGINT" property="boardId" />
     <result column="userId" jdbcType="BIGINT" property="userid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="vistCount" jdbcType="INTEGER" property="vistcount" />
-    <result column="replyCount" jdbcType="INTEGER" property="replycount" />
-    <result column="likeCount" jdbcType="INTEGER" property="likecount" />
+    <result column="vistCount" jdbcType="INTEGER" property="vistCount" />
+    <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
+    <result column="likeCount" jdbcType="INTEGER" property="likeCount" />
     <result column="state" jdbcType="TINYINT" property="state" />
-    <result column="deleteState" jdbcType="TINYINT" property="deletestate" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="deleteState" jdbcType="TINYINT" property="deleteState" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.weisizhang.forumbackend.model.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -41,86 +41,86 @@
       title, vistCount, replyCount,
       likeCount, state, deleteState,
       createTime, updateTime, content)
-    values (#{id,jdbcType=BIGINT}, #{boardid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT},
-      #{title,jdbcType=VARCHAR}, #{vistcount,jdbcType=INTEGER}, #{replycount,jdbcType=INTEGER},
-      #{likecount,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{deletestate,jdbcType=TINYINT},
-      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+    values (#{id,jdbcType=BIGINT}, #{boardId,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT},
+      #{title,jdbcType=VARCHAR}, #{vistCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER},
+      #{likeCount,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{deleteState,jdbcType=TINYINT},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.weisizhang.forumbackend.model.Article" useGeneratedKeys="true" keyProperty="id">
     insert into t_article
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">id,</if>
-      <if test="boardid != null">boardID,</if>
+      <if test="boardId != null">boardID,</if>
       <if test="userid != null">userId,</if>
       <if test="title != null">title,</if>
-      <if test="vistcount != null">vistCount,</if>
-      <if test="replycount != null">replyCount,</if>
-      <if test="likecount != null">likeCount,</if>
+      <if test="vistCount != null">vistCount,</if>
+      <if test="replyCount != null">replyCount,</if>
+      <if test="likeCount != null">likeCount,</if>
       <if test="state != null">state,</if>
-      <if test="deletestate != null">deleteState,</if>
-      <if test="createtime != null">createTime,</if>
-      <if test="updatetime != null">updateTime,</if>
+      <if test="deleteState != null">deleteState,</if>
+      <if test="createTime != null">createTime,</if>
+      <if test="updateTime != null">updateTime,</if>
       <if test="content != null">content,</if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">#{id,jdbcType=BIGINT},</if>
-      <if test="boardid != null">#{boardid,jdbcType=BIGINT},</if>
+      <if test="boardId != null">#{boardId,jdbcType=BIGINT},</if>
       <if test="userid != null">#{userid,jdbcType=BIGINT},</if>
       <if test="title != null">#{title,jdbcType=VARCHAR},</if>
-      <if test="vistcount != null">#{vistcount,jdbcType=INTEGER},</if>
-      <if test="replycount != null">#{replycount,jdbcType=INTEGER},</if>
-      <if test="likecount != null">#{likecount,jdbcType=INTEGER},</if>
+      <if test="vistCount != null">#{vistCount,jdbcType=INTEGER},</if>
+      <if test="replyCount != null">#{replyCount,jdbcType=INTEGER},</if>
+      <if test="likeCount != null">#{likeCount,jdbcType=INTEGER},</if>
       <if test="state != null">#{state,jdbcType=TINYINT},</if>
-      <if test="deletestate != null">#{deletestate,jdbcType=TINYINT},</if>
-      <if test="createtime != null">#{createtime,jdbcType=TIMESTAMP},</if>
-      <if test="updatetime != null">#{updatetime,jdbcType=TIMESTAMP},</if>
+      <if test="deleteState != null">#{deleteState,jdbcType=TINYINT},</if>
+      <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+      <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
       <if test="content != null">#{content,jdbcType=LONGVARCHAR},</if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.weisizhang.forumbackend.model.Article">
     update t_article
     <set>
-      <if test="boardid != null">boardID = #{boardid,jdbcType=BIGINT},</if>
+      <if test="boardId != null">boardID = #{boardId,jdbcType=BIGINT},</if>
       <if test="userid != null">userId = #{userid,jdbcType=BIGINT},</if>
       <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>
-      <if test="vistcount != null">vistCount = #{vistcount,jdbcType=INTEGER},</if>
-      <if test="replycount != null">replyCount = #{replycount,jdbcType=INTEGER},</if>
-      <if test="likecount != null">likeCount = #{likecount,jdbcType=INTEGER},</if>
+      <if test="vistCount != null">vistCount = #{vistCount,jdbcType=INTEGER},</if>
+      <if test="replyCount != null">replyCount = #{replyCount,jdbcType=INTEGER},</if>
+      <if test="likeCount != null">likeCount = #{likeCount,jdbcType=INTEGER},</if>
       <if test="state != null">state = #{state,jdbcType=TINYINT},</if>
-      <if test="deletestate != null">deleteState = #{deletestate,jdbcType=TINYINT},</if>
-      <if test="createtime != null">createTime = #{createtime,jdbcType=TIMESTAMP},</if>
-      <if test="updatetime != null">updateTime = #{updatetime,jdbcType=TIMESTAMP},</if>
+      <if test="deleteState != null">deleteState = #{deleteState,jdbcType=TINYINT},</if>
+      <if test="createTime != null">createTime = #{createTime,jdbcType=TIMESTAMP},</if>
+      <if test="updateTime != null">updateTime = #{updateTime,jdbcType=TIMESTAMP},</if>
       <if test="content != null">content = #{content,jdbcType=LONGVARCHAR},</if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weisizhang.forumbackend.model.Article">
     update t_article
-    set boardID = #{boardid,jdbcType=BIGINT},
+    set boardID = #{boardId,jdbcType=BIGINT},
       userId = #{userid,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
-      vistCount = #{vistcount,jdbcType=INTEGER},
-      replyCount = #{replycount,jdbcType=INTEGER},
-      likeCount = #{likecount,jdbcType=INTEGER},
+      vistCount = #{vistCount,jdbcType=INTEGER},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      likeCount = #{likeCount,jdbcType=INTEGER},
       state = #{state,jdbcType=TINYINT},
-      deleteState = #{deletestate,jdbcType=TINYINT},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      deleteState = #{deleteState,jdbcType=TINYINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.weisizhang.forumbackend.model.Article">
     update t_article
-    set boardID = #{boardid,jdbcType=BIGINT},
+    set boardID = #{boardId,jdbcType=BIGINT},
       userId = #{userid,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
-      vistCount = #{vistcount,jdbcType=INTEGER},
-      replyCount = #{replycount,jdbcType=INTEGER},
-      likeCount = #{likecount,jdbcType=INTEGER},
+      vistCount = #{vistCount,jdbcType=INTEGER},
+      replyCount = #{replyCount,jdbcType=INTEGER},
+      likeCount = #{likeCount,jdbcType=INTEGER},
       state = #{state,jdbcType=TINYINT},
-      deleteState = #{deletestate,jdbcType=TINYINT},
-      createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+      deleteState = #{deleteState,jdbcType=TINYINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
