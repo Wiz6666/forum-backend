@@ -254,10 +254,32 @@
     });
 
     // ===================== 请求帖子详情 ===================== 
-    // url: '/article/getById?id=' + currentArticle.id,
     // 成功后， 调用initArticleDetails()方法，初始化页面内容
+    if (!currentArticle || !currentArticle.id) {
+      console.error('currentArticle 未设置，无法加载帖子详情');
+      return;
+    }
     $.ajax({
-      
+      type: 'get',
+      url: 'article/details?id=' + currentArticle.id,
+      success: function (result) {
+        if (result.code == 0) {
+          initArticleDetails(result.data);
+        } else {
+          $.toast({
+            heading: '错误',
+            text: result.message,
+            icon: 'error'
+          });
+        }
+      },
+      error: function () {
+        $.toast({
+          heading: '错误',
+          text: '请求帖子详情失败',
+          icon: 'error'
+        });
+      }
 
     });
 

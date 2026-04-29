@@ -7,6 +7,7 @@ public class AppResult<T> {
     private int  code;
     @JsonInclude(JsonInclude.Include.ALWAYS)
     private String message;
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private T data;
 
 

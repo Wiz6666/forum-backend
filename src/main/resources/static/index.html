@@ -61,6 +61,7 @@
               </form>
             </div>
           </div>
+
           <!-- 主题样式日夜转换 -->
           <div class="d-none d-md-flex">
             <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="切换至夜间模式" data-bs-toggle="tooltip"
@@ -464,6 +465,13 @@
           location.assign('/sign-in.html');
         }
       });
+    });
+
+    // ============================ 处理发新帖按钮点击事件 ===========================
+    $('#btn_index_post_article').click(function () {
+      console.log('加载发贴页面');
+      removeNavActive();
+      $('#bit-forum-content').load('article.html');
     });
 
     // ============ 发送站内信 ==============

@@ -6,7 +6,7 @@
     <result column="boardID" jdbcType="BIGINT" property="boardId" />
     <result column="userId" jdbcType="BIGINT" property="userid" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="vistCount" jdbcType="INTEGER" property="vistCount" />
+    <result column="vistCount" jdbcType="INTEGER" property="visitCount" />
     <result column="replyCount" jdbcType="INTEGER" property="replyCount" />
     <result column="likeCount" jdbcType="INTEGER" property="likeCount" />
     <result column="state" jdbcType="TINYINT" property="state" />
@@ -42,7 +42,7 @@
       likeCount, state, deleteState,
       createTime, updateTime, content)
     values (#{id,jdbcType=BIGINT}, #{boardId,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT},
-      #{title,jdbcType=VARCHAR}, #{vistCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER},
+      #{title,jdbcType=VARCHAR}, #{visitCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER},
       #{likeCount,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{deleteState,jdbcType=TINYINT},
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
@@ -53,7 +53,7 @@
       <if test="boardId != null">boardID,</if>
       <if test="userid != null">userId,</if>
       <if test="title != null">title,</if>
-      <if test="vistCount != null">vistCount,</if>
+      <if test="visitCount != null">vistCount,</if>
       <if test="replyCount != null">replyCount,</if>
       <if test="likeCount != null">likeCount,</if>
       <if test="state != null">state,</if>
@@ -67,7 +67,7 @@
       <if test="boardId != null">#{boardId,jdbcType=BIGINT},</if>
       <if test="userid != null">#{userid,jdbcType=BIGINT},</if>
       <if test="title != null">#{title,jdbcType=VARCHAR},</if>
-      <if test="vistCount != null">#{vistCount,jdbcType=INTEGER},</if>
+      <if test="visitCount != null">#{visitCount,jdbcType=INTEGER},</if>
       <if test="replyCount != null">#{replyCount,jdbcType=INTEGER},</if>
       <if test="likeCount != null">#{likeCount,jdbcType=INTEGER},</if>
       <if test="state != null">#{state,jdbcType=TINYINT},</if>
@@ -83,7 +83,7 @@
       <if test="boardId != null">boardID = #{boardId,jdbcType=BIGINT},</if>
       <if test="userid != null">userId = #{userid,jdbcType=BIGINT},</if>
       <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>
-      <if test="vistCount != null">vistCount = #{vistCount,jdbcType=INTEGER},</if>
+      <if test="visitCount != null">vistCount = #{visitCount,jdbcType=INTEGER},</if>
       <if test="replyCount != null">replyCount = #{replyCount,jdbcType=INTEGER},</if>
       <if test="likeCount != null">likeCount = #{likeCount,jdbcType=INTEGER},</if>
       <if test="state != null">state = #{state,jdbcType=TINYINT},</if>
@@ -99,7 +99,7 @@
     set boardID = #{boardId,jdbcType=BIGINT},
       userId = #{userid,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
-      vistCount = #{vistCount,jdbcType=INTEGER},
+      vistCount = #{visitCount,jdbcType=INTEGER},
       replyCount = #{replyCount,jdbcType=INTEGER},
       likeCount = #{likeCount,jdbcType=INTEGER},
       state = #{state,jdbcType=TINYINT},
@@ -114,7 +114,7 @@
     set boardID = #{boardId,jdbcType=BIGINT},
       userId = #{userid,jdbcType=BIGINT},
       title = #{title,jdbcType=VARCHAR},
-      vistCount = #{vistCount,jdbcType=INTEGER},
+      vistCount = #{visitCount,jdbcType=INTEGER},
       replyCount = #{replyCount,jdbcType=INTEGER},
       likeCount = #{likeCount,jdbcType=INTEGER},
       state = #{state,jdbcType=TINYINT},

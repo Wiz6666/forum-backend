@@ -1,6 +1,7 @@
 package com.weisizhang.forumbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -27,6 +28,7 @@ public class User {
     @JsonIgnore
     private String salt;
     @Schema(description = "头像地址")
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private String avatarurl;
     @Schema(description = "发帖数量")
     private Integer articleCount;

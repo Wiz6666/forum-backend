@@ -1,5 +1,6 @@
 package com.weisizhang.forumbackend.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,7 +15,7 @@ public class Article {
 
     private String title;
 
-    private Integer vistCount;
+    private Integer visitCount;
 
     private Integer replyCount;
 
@@ -30,4 +31,14 @@ public class Article {
     private Date updateTime;
 
     private String content;
+
+    // 关联的用户信息
+    private User user;
+
+    // 关联的版块信息
+    private Board board;
+
+    // 用户是 不 是 作 者
+    @Schema(description = "用户是不是作者")
+    private boolean isOwn;
 }

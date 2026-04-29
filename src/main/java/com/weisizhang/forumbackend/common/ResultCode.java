@@ -21,6 +21,7 @@ public enum ResultCode {
 
     //关于板块Board错误12**
     FAILED_BOARD_ARTICLE_COUNT  (1201,"更新贴子数量失败"),
+    FAILED_BOARD_NOT_EXISTS     (1202,"板块不存在"),
 
     ERROR_SERVICES              (2000,"服务器内部错误"),
     ERROR_IS_NULL               (2001,"IS NULL");
